@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { nanoid } from 'nanoid';
 
-import contactsJson from '../assets/contacts.json';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactAction, deleteContactAction, contactsFilterAction } from '../redux/contacts.actions';
+import { addContactAction, deleteContactAction, contactsFilterAction } from '../redux/contacts.slice';
 
 
 import styles from './App.module.css';
@@ -23,29 +22,6 @@ const App =()=> {
   const filter = useSelector(state => state.filter);
   const contacts = useSelector(state => state.contacts);
 
-
-  // state = {
-  //   contacts: [],
-  //   filter: '',
-  // };
-
-
-  //   componentDidMount() {
-  //   const contacts = JSON.parse(localStorage.getItem('contacts')) || contactsJson;
-  //   this.setState({ contacts });
-  // }
-
-
-  //  componentDidUpdate(_, prevState) {
-  //   if (
-  //     prevState.contacts.length !== 0 &&
-  //     prevState.contacts.length !== this.state.contacts.length
-  //   ) {
-
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //   }
-
-  //  }
   
   const addContact = ({ name, number }) => {
     const Contact = {
@@ -76,13 +52,7 @@ const App =()=> {
    
   };
   
-  // getVisibleContacts = () => {
-  //   const { contacts, filter } = this.state;
-  //   const normalizedFilter = filter.toLowerCase();
-  //   return contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
+
   
 
   const filteredContacts = useMemo(() => {
@@ -91,9 +61,6 @@ const App =()=> {
     );
   }, [contacts, filter]);
   
-  // render() {
-  //   const { filter } = this.state;
-  //   const visibleContacts = this.getVisibleContacts();
 
 
     return (
